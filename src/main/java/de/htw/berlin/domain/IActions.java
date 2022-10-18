@@ -8,7 +8,7 @@ public interface IActions {
      *
      * @return
      */
-    Card drawCard();
+    Card drawCard(int howManytoDraw); //define how many
 
     /**
      * Play a card
@@ -16,9 +16,12 @@ public interface IActions {
      * @param card The card is played
      * @return If playing was successful
      */
-    boolean playCard(Card card);
+    boolean playCard(Card card, Color color); //Jack cant be played on another Jack // consider Stack and Player
+
+    void wishColor (Color color);
+    void skipTurn();
+    boolean sayMauMau();
     void shuffleStack(List<Card> cardList);
-    void executeAction(String action);
     void announceWinner();
 
 }
