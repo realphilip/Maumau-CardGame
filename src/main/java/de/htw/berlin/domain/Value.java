@@ -5,7 +5,7 @@ public enum Value {
     EIGHT,
     NINE,
     TEN,
-    B,
+    JACK,
     QUEEN,
     KING,
     ACE

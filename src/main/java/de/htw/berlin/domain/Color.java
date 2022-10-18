@@ -1,8 +1,9 @@
 package de.htw.berlin.domain;
 
 public enum Color {
-    HERTZ,
-    PIEK,
-    CARO,
-    KREUTZ
+    //These are suits; not colors.
+    HEART,
+    CLUB,
+    DIAMOND,
+    SPADE
 }

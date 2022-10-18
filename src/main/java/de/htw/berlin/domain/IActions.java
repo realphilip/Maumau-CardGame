@@ -12,13 +12,13 @@ public interface IActions {
 
     /**
      * Play a card
-     *
+     * Card must be playable
      * @param card The card is played
      * @return If playing was successful
      */
     boolean playCard(Card card);
     void shuffleStack(List<Card> cardList);
-    void executeAction(_Action action);
+    void executeAction(String action);
     void announceWinner();
 
 }
