@@ -2,12 +2,15 @@ package de.htw.berlin.domain;
 
 import java.util.List;
 
+/**
+ * Temporary interface for all game actions
+ */
 public interface IActions {
 
     /**
      *
      * Draws a card from the drawStack
-     *
+     * @param howManyToDraw how many cards to draw
      * @return Card
      */
     Card drawCard(int howManyToDraw);
@@ -40,7 +43,9 @@ public interface IActions {
 
     /**
      *
-     * @param color
+     * Color that is wished
+     *
+     * @param color type of the card
      */
     void wishColor (Color color);
 
@@ -50,6 +55,7 @@ public interface IActions {
     void skipTurn();
 
     /**
+     * player say MauMau
      *
      * @return If MauMau is valid
      */

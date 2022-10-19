@@ -8,7 +8,7 @@ public class Player {
     private boolean saidMauMau = false;
 
 
-
+/*
     public boolean isSaidMauMau() {
         return saidMauMau;
     }
@@ -20,9 +20,11 @@ public class Player {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public List<Card> getHand() {
         return hand;
     }
@@ -30,6 +32,8 @@ public class Player {
     public void setHand(List<Card> hand) {
         this.hand = hand;
     }
+
+ */
 
     boolean playCard(Card card){
         return false;
