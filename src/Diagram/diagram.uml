@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>de.htw.berlin.domain</OriginalElement>
+  <nodes>
+    <node x="-72.04600874166084" y="-30.328502415458928">de.htw.berlin.domain.Value</node>
+    <node x="15.346215780998364" y="592.6682769726248">de.htw.berlin.domain.Game</node>
+    <node x="-185.65711985277198" y="374.0">de.htw.berlin.domain.Player</node>
+    <node x="206.0" y="-3.745571658615148">de.htw.berlin.domain.Color</node>
+    <node x="96.50322061191628" y="396.0">de.htw.berlin.domain.Stack</node>
+    <node x="75.11904761904768" y="245.0">de.htw.berlin.domain.Card</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="de.htw.berlin.domain.Player" target="de.htw.berlin.domain.Card" relationship="TO_MANY">
+      <point x="5.6843418860808015E-14" y="-48.5" />
+      <point x="-96.65711985277193" y="347.0" />
+      <point x="134.11904761904768" y="347.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Game" target="de.htw.berlin.domain.Color" relationship="TO_ONE">
+      <point x="21.771336553945275" y="-59.5" />
+      <point x="153.97745571658612" y="592.6682769726248" />
+      <point x="153.97745571658612" y="524.2141706924315" />
+      <point x="309.9541062801933" y="524.2141706924315" />
+      <point x="45.95410628019329" y="37.22785829307571" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Card" target="de.htw.berlin.domain.Color" relationship="TO_ONE">
+      <point x="16.082240625718867" y="-32.052334943639295" />
+      <point x="150.20128824476654" y="219.0" />
+      <point x="264.0" y="219.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Card" target="de.htw.berlin.domain.Value" relationship="TO_ONE">
+      <point x="-18.751897860593573" y="-36.40660225442832" />
+      <point x="115.3671497584541" y="219.0" />
+      <point x="-21.54600874166084" y="219.0" />
+      <point x="0.0" y="103.5" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Game" target="de.htw.berlin.domain.Player" relationship="TO_MANY">
+      <point x="-38.61030595813202" y="-59.91062801932367" />
+      <point x="70.73590982286635" y="524.2141706924315" />
+      <point x="-96.65711985277198" y="524.2141706924315" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Game" target="de.htw.berlin.domain.Stack" relationship="TO_ONE">
+      <point x="10.375201288244796" y="-60.99919484702093" />
+      <point x="119.72141706924316" y="486.0" />
+      <point x="181.50322061191628" y="486.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="de.htw.berlin.domain.Stack" target="de.htw.berlin.domain.Card" relationship="TO_MANY">
+      <point x="0.0" y="-26.5" />
+      <point x="47.3841729928686" y="35.81561996779391" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9186390532544378" showDependencies="true" x="254.7037037037037" y="381.61996779388085" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
