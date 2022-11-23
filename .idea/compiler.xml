@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="gamemanagement" />
         <module name="playermanagement" />
+        <module name="cardmanagement" />
         <module name="kbe-maumau" />
       </profile>
     </annotationProcessing>
