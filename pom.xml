@@ -6,7 +6,12 @@
 
     <groupId>de.htw.berlin</groupId>
     <artifactId>maumau</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>gamemanagement</module>
+        <module>playermanagement</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>

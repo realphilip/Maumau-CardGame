@@ -1,10 +1,11 @@
 package de.htw.berlin.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Stack {
 
-    private List<Card> cardList;
+    private List<Card> cardList = new ArrayList<>();
 
     void shuffleStack(){}
 
