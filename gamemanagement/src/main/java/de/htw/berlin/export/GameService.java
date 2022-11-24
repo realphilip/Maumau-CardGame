@@ -1,7 +1,9 @@
 package de.htw.berlin.export;
 
 import de.htw.berlin.domain.*;
+import de.htw.berlin.domain.Color;
 
+import java.awt.*;
 import java.util.List;
 
 public interface GameService {

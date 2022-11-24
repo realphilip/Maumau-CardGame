@@ -1,6 +1,11 @@
 package de.htw.berlin.domain;
 
 public enum Value {
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
     SEVEN,
     EIGHT,
     NINE,
@@ -9,7 +14,4 @@ public enum Value {
     QUEEN,
     KING,
     ACE
-
-
-
 }
