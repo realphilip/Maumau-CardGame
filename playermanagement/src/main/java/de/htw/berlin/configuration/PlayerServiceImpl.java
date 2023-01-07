@@ -17,11 +17,13 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player addCardtoHand(Card card, Player player) {
+        player.getHand().add(card);
         return player;
     }
 
     @Override
     public Player removeCardfromHand(Card card, Player player) {
+        player.getHand().remove(card);
         return player;
     }
 }

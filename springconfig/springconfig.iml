@@ -7,5 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.4" level="project" />
+    <orderEntry type="module" module-name="cardmanagement" />
+    <orderEntry type="module" module-name="gamemanagement" />
+    <orderEntry type="module" module-name="playermanagement" />
+    <orderEntry type="module" module-name="rulesmanagement" />
   </component>
 </module>
