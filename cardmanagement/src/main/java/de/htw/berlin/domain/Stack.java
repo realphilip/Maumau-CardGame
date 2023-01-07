@@ -7,9 +7,9 @@ public class Stack {
 
     private List<Card> cardList = new ArrayList<>();
 
-    void shuffleStack(){}
+    public void shuffleStack(){}
 
-    void putCardOnStack(Card card){}
+    public void putCardOnStack(Card card){}
 
     Card drawCard(){
         return null;

@@ -13,8 +13,5 @@
         <module name="kbe-maumau" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="maumau" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>
