@@ -1,8 +1,7 @@
-package de.htw.berlin.configuration;
+package de.htw.berlin.impl;
 
 import de.htw.berlin.domain.Card;
 import de.htw.berlin.domain.Player;
-import de.htw.berlin.domain.Stack;
 import de.htw.berlin.export.PlayerService;
 import org.springframework.stereotype.Component;
 

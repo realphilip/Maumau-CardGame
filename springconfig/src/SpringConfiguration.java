@@ -1,14 +1,14 @@
-import de.htw.berlin.configuration.CardServiceImpl;
-import de.htw.berlin.configuration.GameServiceImpl;
-import de.htw.berlin.configuration.PlayerServiceImpl;
-import de.htw.berlin.configuration.RulesServiceImpl;
+import de.htw.berlin.impl.CardServiceImpl;
+import de.htw.berlin.impl.GameServiceImpl;
+import de.htw.berlin.impl.PlayerServiceImpl;
+import de.htw.berlin.impl.RulesServiceImpl;
 import de.htw.berlin.export.CardService;
 import de.htw.berlin.export.GameService;
 import de.htw.berlin.export.PlayerService;
 import de.htw.berlin.export.RulesService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+
 @Configuration
 public class SpringConfiguration {
 

@@ -1,4 +1,4 @@
-package de.htw.berlin.configuration;
+package de.htw.berlin.impl;
 
 
 import de.htw.berlin.domain.*;
@@ -6,9 +6,7 @@ import de.htw.berlin.domain.Color;
 import de.htw.berlin.export.GameService;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
 import java.util.List;
-import java.util.Random;
 
 @Component
 public class GameServiceImpl implements GameService {
@@ -23,7 +21,10 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game drawCard(Game game) {
-        return null;
+        Card c1 = new Card();
+        game.getDrawStack().cardList.remove(c1);
+        game.getActivePlayer().getHand().add(c1);
+        return game;
     }
 
     @Override
@@ -32,8 +33,19 @@ public class GameServiceImpl implements GameService {
             throw new IllegalArgumentException("It is not the turn of the given player");
         }
 
-        Stack s1 = new Stack();
-        s1.putCardOnStack(card);
+        Card lastCard = game.getPlayStack().cardList.get(game.getPlayStack().cardList.size() - 1);
+
+        if(card.getValue() == Value.JACK && lastCard.getValue() == Value.JACK){
+            throw new IllegalArgumentException("You can not put Jack on a Jack");
+        }
+
+        if(card.getValue() != lastCard.getValue() || card.getColor() != lastCard.getColor()){
+            throw new IllegalArgumentException("The color/value of your card does not " +
+                    "match with the last card on the Play-Stack");
+        }
+
+        player.getHand().remove(card);
+        game.getPlayStack().putCardOnStack(card);
 
         return game;
     }
@@ -57,6 +69,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game nextPlayer(Game game) {
+        game.setHasPlayerPlayed(true);
         return game;
     }
 

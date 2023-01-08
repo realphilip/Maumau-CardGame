@@ -1,4 +1,4 @@
-package de.htw.berlin.configuration;
+package de.htw.berlin.impl;
 
 import de.htw.berlin.export.CardService;
 import de.htw.berlin.domain.Card;

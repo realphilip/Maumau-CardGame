@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Stack {
 
-    private List<Card> cardList = new ArrayList<>();
+    public List<Card> cardList = new ArrayList<>();
 
     public void shuffleStack(){}
 

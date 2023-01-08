@@ -1,8 +1,7 @@
-package de.htw.berlin.configuration;
+package de.htw.berlin.impl;
 
 import de.htw.berlin.domain.Card;
 import de.htw.berlin.domain.Color;
-import de.htw.berlin.domain.Game;
 import de.htw.berlin.domain.Value;
 import de.htw.berlin.export.RulesService;
 import org.springframework.stereotype.Component;
@@ -11,13 +10,17 @@ import org.springframework.stereotype.Component;
 public class RulesServiceImpl implements RulesService {
     @Override
     public boolean canPlaceCard(Card placedCard, Card cardOnDeck, Color wishedColor) {
-        if(placedCard.getColor() == wishedColor){
-            return true;
+        if(placedCard.getColor() != wishedColor){
+            return false;
         }
-        if(placedCard.getValue() == cardOnDeck.getValue()){
-            return true;
+        if(placedCard.getValue() != cardOnDeck.getValue() || placedCard.getColor() != cardOnDeck.getColor()){
+            return false;
         }
-        return false;
+        if (placedCard.getValue() == Value.JACK && cardOnDeck.getValue() == Value.JACK){
+            return false;
+        }
+
+        return true;
     }
 
     @Override

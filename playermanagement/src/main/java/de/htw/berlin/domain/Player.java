@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Player {
     private String name;
-    private Stack hand;
+    private Stack<Card> hand;
     private boolean saidMauMau = false;
 
     //add boolean for real player/computer player
@@ -18,11 +18,11 @@ public class Player {
         this.name = name;
     }
 
-    public Stack getHand() {
+    public Stack<Card> getHand() {
         return hand;
     }
 
-    public void setHand(Stack hand) {
+    public void setHand(Stack<Card> hand) {
         this.hand = hand;
     }
 
