@@ -5,18 +5,25 @@ import de.htw.berlin.domain.*;
 import de.htw.berlin.domain.Color;
 import de.htw.berlin.export.GameService;
 import org.springframework.stereotype.Component;
+import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class GameServiceImpl implements GameService {
+    Logger logger;
     @Override
     public Game createGame(String uniqueGameName, List<Player> playerList, boolean specialRules) {
-        Game g1 = new Game();
-        g1.setUniqueGameName(uniqueGameName);
-        g1.setPlayerList(playerList);
-        g1.setSpecialRules(specialRules);
-        return g1;
+        Game game = new Game();
+        logger.debug("creating a new game");
+        game.setSpecialRules(specialRules);
+        List<Player> players = new ArrayList<>();
+        Stack playStack = new Stack();
+        for (String a)
+        //g1.setUniqueGameName(uniqueGameName);
+        game.setSpecialRules(specialRules);
+        return game;
     }
 
     @Override

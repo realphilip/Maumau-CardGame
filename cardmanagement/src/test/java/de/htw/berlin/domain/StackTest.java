@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 
 class StackTest {
-    @Test
+/*    @Test
     void testDrawCard() {
         assertNull((new Stack()).drawCard());
     }
@@ -19,6 +19,6 @@ class StackTest {
         actualStack.putCardOnStack(card);
         actualStack.shuffleStack();
 
-    }
+    }*/
 }
 

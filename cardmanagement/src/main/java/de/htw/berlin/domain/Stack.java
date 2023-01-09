@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stack {
-
     public List<Card> cardList = new ArrayList<>();
 
-    public void shuffleStack(){}
+    public List<Card> getCardList() {
+        return cardList;
+    }
 
-    public void putCardOnStack(Card card){}
-
-    Card drawCard(){
-        return null;
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
     }
 
 }

@@ -13,6 +13,7 @@
         <module>playermanagement</module>
         <module>cardmanagement</module>
         <module>rulesmanagement</module>
+        <module>interfacemanagement</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

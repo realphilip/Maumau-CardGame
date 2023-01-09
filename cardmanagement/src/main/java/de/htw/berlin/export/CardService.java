@@ -25,8 +25,8 @@ public interface CardService {
     /**
      *
      * @param cards the stack to be shuffled
-     * @param type the type of stack (beginning stack or not)
+     * @param isBeginning the type of stack (beginning stack or not)
      * @return
      */
-    Stack shuffleStack(Stack cards, boolean type);
+    Stack shuffleStack(Stack cards, boolean isBeginning);
 }

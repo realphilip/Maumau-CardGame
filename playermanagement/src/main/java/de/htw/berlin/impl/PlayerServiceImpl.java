@@ -5,6 +5,10 @@ import de.htw.berlin.domain.Player;
 import de.htw.berlin.export.PlayerService;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 @Component
 public class PlayerServiceImpl implements PlayerService {
     @Override
@@ -16,13 +20,17 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player addCardtoHand(Card card, Player player) {
-        player.getHand().add(card);
+        Stack<Card> hand = player.getHand();
+        hand.add(card);
+        player.setHand(hand);
         return player;
     }
 
     @Override
     public Player removeCardfromHand(Card card, Player player) {
-        player.getHand().remove(card);
+        Stack<Card> hand = player.getHand();
+        hand.remove(card);
+        player.setHand(hand);
         return player;
     }
 }

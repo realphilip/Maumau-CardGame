@@ -10,7 +10,7 @@ public interface GameService {
 
     /**
      * Create a game
-     * @param uniqueGameName User-defined game name, should be uniqe
+     * @param uniqueGameName User-defined game name, should be unique
      * @param playerList List of player objects participating
      * @param specialRules Are rules normal or special?
      * @return The created new game

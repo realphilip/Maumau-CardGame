@@ -5,10 +5,14 @@
     <file url="file://$PROJECT_DIR$/cardmanagement/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gamemanagement/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gamemanagement/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/interfacemanagement/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/interfacemanagement/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/playermanagement/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/playermanagement/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rulesmanagement/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rulesmanagement/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springconfig/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springconfig/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

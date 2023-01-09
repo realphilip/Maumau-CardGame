@@ -4,6 +4,11 @@ public class Card {
     private Value value;
     private Color color;     //these are actually the 4 suits (types)
 
+    public Card(Value value, Color color) {
+        this.value = value;
+        this.color = color;
+    }
+
     public Value getValue() {
         return value;
     }

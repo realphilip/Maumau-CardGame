@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,8 @@ class GameTest {
     void testConstructor() {
         Game actualGame = new Game();
         Player player = new Player();
-        player.setHand(new Stack());
+        Stack stack3 = new Stack();
+        //player.setHand(stack3);
         player.setName("Name");
         player.setSaidMauMau(true);
         actualGame.setActivePlayer(player);

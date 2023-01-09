@@ -7,11 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gamemanagement" />
+        <module name="cardmanagement" />
         <module name="rulesmanagement" />
         <module name="playermanagement" />
-        <module name="cardmanagement" />
+        <module name="springconfig" />
         <module name="kbe-maumau" />
+        <module name="interfacemanagement" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="interfacemanagement" options="" />
+    </option>
   </component>
 </project>
