@@ -15,7 +15,7 @@ public interface GameService {
      * @param specialRules Are rules normal or special?
      * @return The created new game
      */
-    Game createGame(String uniqueGameName, List<Player> playerList, boolean specialRules);
+    Game createGame(String uniqueGameName, List<String> playerList, boolean specialRules);
     /**
      *
      * Draws a card from the drawStack
@@ -84,5 +84,6 @@ public interface GameService {
      */
     Game sayMauMau(Game game);
     //TODO: find out how to deal with Ablagestapel
-    //TODO: find out how to deal with different rules
+
+    RulesService
 }

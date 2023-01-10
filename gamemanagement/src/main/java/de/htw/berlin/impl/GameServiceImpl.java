@@ -3,27 +3,44 @@ package de.htw.berlin.impl;
 
 import de.htw.berlin.domain.*;
 import de.htw.berlin.domain.Color;
+import de.htw.berlin.export.CardService;
 import de.htw.berlin.export.GameService;
+import de.htw.berlin.export.PlayerService;
+import de.htw.berlin.export.RulesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class GameServiceImpl implements GameService {
+    //Note Ü3: how to instantiate with spring?
+    private PlayerService playerService;
+    private CardService cardService;
+    private RulesService rulesService;
     Logger logger;
     @Override
-    public Game createGame(String uniqueGameName, List<Player> playerList, boolean specialRules) {
+    public Game createGame(String uniqueGameName, List<String> playerList, boolean specialRules) {
         Game game = new Game();
         logger.debug("creating a new game");
         game.setSpecialRules(specialRules);
-        List<Player> players = new ArrayList<>();
+        List<Player> actualPlayers = new ArrayList<>();
         Stack playStack = new Stack();
-        for (String a)
+        for (String playerValue : playerList){
+            Player player = playerService.newPlayer(playerValue);
+            actualPlayers.add(player);
+        }
+        game.setPlayerList(actualPlayers);
+        game.setActivePlayer(game.getPlayerList().get(0));
+        game.setDrawStack(cardService.shuffleStack(cardService.createStack(), false));
+        //DONE TILL HERE
         //g1.setUniqueGameName(uniqueGameName);
         game.setSpecialRules(specialRules);
         return game;
+        System.out.println(" ");
     }
 
     @Override
