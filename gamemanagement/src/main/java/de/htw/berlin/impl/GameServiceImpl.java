@@ -36,18 +36,19 @@ public class GameServiceImpl implements GameService {
         game.setPlayerList(actualPlayers);
         game.setActivePlayer(game.getPlayerList().get(0));
         game.setDrawStack(cardService.shuffleStack(cardService.createStack(), false));
+        game.setDrawStack(playStack);
         //DONE TILL HERE
         //g1.setUniqueGameName(uniqueGameName);
         game.setSpecialRules(specialRules);
         return game;
-        System.out.println(" ");
+        //System.out.println(" hello");
     }
 
     @Override
     public Game drawCard(Game game) {
-        Card c1 = new Card();
-        game.getDrawStack().cardList.remove(c1);
-        game.getActivePlayer().getHand().add(c1);
+        //Card c1 = new Card();
+/*        game.getDrawStack().cardList.remove(c1);
+        game.getActivePlayer().getHand().add(c1);*/
         return game;
     }
 
@@ -68,16 +69,16 @@ public class GameServiceImpl implements GameService {
                     "match with the last card on the Play-Stack");
         }
 
-        player.getHand().remove(card);
-        game.getPlayStack().putCardOnStack(card);
+/*        player.getHand().remove(card);
+        game.getPlayStack()*/
 
         return game;
     }
 
     @Override
-    public Stack shuffleStack(Stack stack) {
-        stack.shuffleStack();
-        return stack;
+    public Game shuffleStack(Game game) {
+       /* stack.shuffleStack();*/
+        return game;
     }
 
     @Override
@@ -107,4 +108,69 @@ public class GameServiceImpl implements GameService {
         game.getActivePlayer().setSaidMauMau(true);
         return game;
     }
+
+    @Override
+    public boolean isSayMauMauNecessary(Player player) {
+        logger.debug("checking if saying Mau is necessary for a palyer");
+        if (player.getHand().size() == 1) return true;
+        else return false;
+    }
+
+    @Override
+    public RulesService chooseRules(boolean specialRules) {
+        return null;
+    }
+
+    @Override
+    public Stack giveAroundCards(Stack drawStack, List<Player> playerList, int amountOfCardsToGiveAround) {
+        logger.debug("Giving cards to all of the players");
+        for (int i = 0; i < amountOfCardsToGiveAround; i++) {
+            for (int n = 0; n < playerList.size(); n++) {
+                Card card = drawStack.getCardList().get(drawStack.cardList.size() - 1);
+                playerService.addCardtoHand(card, playerList.get(n));
+                drawStack.cardList.remove(card);
+            }
+        }
+        return drawStack;
+        // in case of passing cards to a single player, use the method giveCardsToOne which uses giveAroundCards as a submethod.
+    }
+
+    @Override
+    public Stack giveCardsToOne(Stack drawStack, Player player, int amountOfCardsToGiveAround) {
+        logger.debug("Giving cards to one of the players.");
+        //this is simply another way to use the giveAroundCards method.
+        List<Player> fakeListForSubmethod = new ArrayList<>();
+        fakeListForSubmethod.add(player);
+        giveAroundCards(drawStack, fakeListForSubmethod, amountOfCardsToGiveAround);
+        return drawStack;
+    }
+
+    @Override
+    public Stack removeCardFromAStack(Stack stack, Card card) {
+        logger.debug("Removing a card from a stack.");
+        stack.cardList.remove(card);
+        return stack;
+    }
+
+    @Override
+    public int cardsPerPlayer(Stack completeStack, List<Player> players) {
+        logger.debug("Using calculation to determine the number of cards per player. Generally, a player will have 6 cards. In case of large number of players drawstack caps at 6, which can lead to fewer cards. ");
+        //this calculation serves the purpose that there are always at least 6 cards in the playstack! in case there are lots of players, theyll have to play with fewer cards.
+        int calculation = (int) Math.floor((completeStack.cardList.size() - 6) / players.size());
+        //die Idee dazu stammt auf Anfrage von: https://stackoverflow.com/questions/34705178/rounding-double-to-int-always-to-the-smaller und auf Tipp von Kommiltonen (Krisjanis Spridis)
+        if (calculation > 6) {
+            calculation = 6;
+        }
+        return calculation;
+    }
+
+    @Override
+    public Stack putDownCard(Stack playStack, Player player, Card card) {
+        logger.debug("Taking the card from the player and transferring it to the playStack.");
+        playerService.removeCardfromHand(card, player);
+        playStack.cardList.add(card);
+        return playStack;
+    }
+
+
 }
