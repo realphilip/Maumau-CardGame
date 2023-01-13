@@ -13,6 +13,7 @@ public class Game {
 
     //fields for persistent games and ability to choose between multiple
     private String uniqueGameName;
+    private Long id;
     private Color currentWishedColor;
     private boolean isDirectionReversed = false;
     private int numberOfCardsToDraw;
@@ -20,6 +21,9 @@ public class Game {
     private String winner;
     private boolean specialRules;
     private boolean hasPlayerPlayed;
+    private boolean isColorWishOutstanding = false;
+    private int roundNumber;
+
 
 
     public List<Player> getPlayerList() {
@@ -116,5 +120,29 @@ public class Game {
 
     public void setActivePlayer(Player activePlayer) {
         this.activePlayer = activePlayer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isColorWishOutstanding() {
+        return isColorWishOutstanding;
+    }
+
+    public void setColorWishOutstanding(boolean colorWishOutstanding) {
+        isColorWishOutstanding = colorWishOutstanding;
+    }
+
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
+    public void setRoundNumber(int roundNumber) {
+        this.roundNumber = roundNumber;
     }
 }

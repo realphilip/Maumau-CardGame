@@ -21,6 +21,8 @@ public class GameServiceImpl implements GameService {
     private PlayerService playerService;
     private CardService cardService;
     private RulesService rulesService;
+    private NormalRulesServiceImpl normalRulesService;
+    private SpecialRulesServiceImpl specialRulesService;
     Logger logger;
     @Override
     public Game createGame(String uniqueGameName, List<String> playerList, boolean specialRules) {
@@ -46,9 +48,10 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game drawCard(Game game) {
-        //Card c1 = new Card();
-/*        game.getDrawStack().cardList.remove(c1);
-        game.getActivePlayer().getHand().add(c1);*/
+        logger.debug("Simply drawing a single card from the Draw Stack.");
+        Card card = game.getDrawStack().cardList.get(game.getDrawStack().cardList.size() - 1); //the last card fo the drawStack
+        playerService.addCardtoHand(card, game.getActivePlayer());
+        game.setDrawStack(removeCardFromAStack(game.getDrawStack(), card));
         return game;
     }
 
@@ -77,48 +80,105 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game shuffleStack(Game game) {
-       /* stack.shuffleStack();*/
+        logger.debug("Checking if the drawStack is nearly empty.");
+        Stack drawStack = game.getDrawStack();
+        Stack newPlayStack = new Stack();
+        if (drawStack.cardList.size() < 4) {
+            logger.debug("Filling the drawStack with the play Stack. Shuffling. Keeping Top and Bottom Cards.");
+            Card topCardStackToFill = drawStack.cardList.get(0);
+            drawStack = game.getPlayStack();
+            //adding the last card of the old playStack to the new (empty) playStack
+            newPlayStack.cardList.add(drawStack.getCardList().get(drawStack.cardList.size() - 1));
+            drawStack.cardList.remove(drawStack.cardList.size() - 1);
+            drawStack.cardList.add(topCardStackToFill);
+            game.setDrawStack(cardService.shuffleStack(drawStack, false));
+            game.setPlayStack(newPlayStack);
+        }
         return game;
     }
 
     @Override
     public boolean checkWinner(Player player) {
-        return player.isSaidMauMau();
+        //FALSE IF PLAYER WINS!
+        logger.debug("Checking if a player has won the game yet.");
+        if (player.getHand().isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
     public Game wishColor(Game game, Color color) {
+        logger.debug("A wished color is being set.");
         game.setCurrentWishedColor(color);
+        game.setColorWishOutstanding(false);
         return game;
     }
 
     @Override
     public Game nextPlayer(Game game) {
-        game.setHasPlayerPlayed(true);
+        //this method modifies the game's ActivePlayer
+        logger.debug("Calculating the next player's turn");
+        int skipFactor = 1;
+        game.setHasPlayerPlayed(false);
+        //if with special rules a player is skipped, the game moves two forward or back depending on direction
+        if(game.isCurrentPlayerSkipped()){
+            skipFactor = skipFactor * 2;
+        }
+        int nextPlayer = 0;
+        // if the direction is reversed, the game goes in the other direction, but the skipfactor is retained.
+        if(game.isDirectionReversed()){
+            nextPlayer = game.getPlayerList().indexOf(game.getActivePlayer()) + (skipFactor);
+        } else if (!game.isDirectionReversed())  {
+            nextPlayer = game.getPlayerList().indexOf(game.getActivePlayer()) - (skipFactor);
+        }
+        if (nextPlayer >= game.getPlayerList().size()){
+            game.setActivePlayer(game.getPlayerList().get(nextPlayer - game.getPlayerList().size()));
+        } else {
+            if (nextPlayer < 0){
+                //in these cases the round simply starts again.
+                game.setActivePlayer(game.getPlayerList().get(nextPlayer - game.getPlayerList().size()));
+            } else {
+                game.setActivePlayer(game.getPlayerList().get(nextPlayer));
+            }
+        }
         return game;
     }
 
     @Override
     public void setMauMau(Player player, boolean saidMau) {
+        logger.debug("Setting new maumau status");
       player.setSaidMauMau(saidMau);
     }
 
     @Override
     public Game sayMauMau(Game game) {
-        game.getActivePlayer().setSaidMauMau(true);
+        logger.debug("Checking active player's MauMau status.");
+        if(isSayMauMauNecessary(game.getActivePlayer())){
+            game=shuffleStack(game);
+            if(!game.getActivePlayer().isSaidMauMau()){
+                //if the active player had to say maumau but didnt, he/she draws two cards.
+                giveCardsToOne(game.getDrawStack(), game.getActivePlayer(), 2);
+            }
+        }
         return game;
     }
 
     @Override
     public boolean isSayMauMauNecessary(Player player) {
-        logger.debug("checking if saying Mau is necessary for a palyer");
+        logger.debug("checking if saying Mau is necessary for a player");
         if (player.getHand().size() == 1) return true;
         else return false;
     }
 
     @Override
     public RulesService chooseRules(boolean specialRules) {
-        return null;
+        if (specialRules = true){
+            return specialRulesService;
+        } else{
+            return normalRulesService;
+        }
     }
 
     @Override

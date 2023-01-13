@@ -39,7 +39,7 @@ public interface GameService {
      *Shuffle a stack or dont
      *
      * @param game game before
-     *@return the game with the shuffled stack
+     *@return the game with the shuffled stack or not
      */
     Game shuffleStack(Game game);
 
