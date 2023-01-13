@@ -57,24 +57,24 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game playCard(Game game, Card card, Player player) {
-        if (player != game.getActivePlayer()){
-            throw new IllegalArgumentException("It is not the turn of the given player");
+        logger.debug("Playing a card!");
+        if(rulesService.canPlaceCard(game.getPlayStack().cardList.get((game.getPlayStack().cardList.size())- 1), card, game.getCurrentWishedColor())) {
+            game.setPlayStack(putDownCard(game.getPlayStack(), player, card));
+            game.setNumberOfCardsToDraw(rulesService.mustDrawTwoCards(card, game.getNumberOfCardsToDraw()));
+            if (rulesService.mustDirectionChange(card)){
+                //hoffe ich bin mit den directions nicht durcheinander gekommen. muss getestet werden.
+                logger.debug("The direction is being changed.");
+                game.setDirectionReversed(!game.isDirectionReversed());
+            }
+            game.setHasPlayerPlayed(true);
+            if(rulesService.canWishColor(card)){
+                logger.debug("A color is being wished.");
+                game.setColorWishOutstanding(true);
+            }
+            //checking if a player's gotta be skipped according to the card placed
+            game.setCurrentPlayerSkipped(rulesService.isTurnSkipped(card));
+            return game;
         }
-
-        Card lastCard = game.getPlayStack().cardList.get(game.getPlayStack().cardList.size() - 1);
-
-        if(card.getValue() == Value.JACK && lastCard.getValue() == Value.JACK){
-            throw new IllegalArgumentException("You can not put Jack on a Jack");
-        }
-
-        if(card.getValue() != lastCard.getValue() || card.getColor() != lastCard.getColor()){
-            throw new IllegalArgumentException("The color/value of your card does not " +
-                    "match with the last card on the Play-Stack");
-        }
-
-/*        player.getHand().remove(card);
-        game.getPlayStack()*/
-
         return game;
     }
 
@@ -174,10 +174,10 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public RulesService chooseRules(boolean specialRules) {
-        if (specialRules = true){
-            return specialRulesService;
-        } else{
-            return normalRulesService;
+        if (!(specialRules = true)) {
+            return rulesService = normalRulesService;
+        } else {
+            return rulesService = specialRulesService;
         }
     }
 
