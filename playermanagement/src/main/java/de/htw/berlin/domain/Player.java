@@ -6,6 +6,8 @@ import java.util.Stack;
 public class Player {
     private String name;
     private Stack<Card> hand;
+
+    private boolean aiOrNot = false;
     private boolean saidMauMau = false;
 
     //add boolean for real player/computer player
@@ -24,6 +26,14 @@ public class Player {
 
     public void setHand(Stack<Card> hand) {
         this.hand = hand;
+    }
+
+    public boolean isAiOrNot() {
+        return aiOrNot;
+    }
+
+    public void setAiOrNot(boolean aiOrNot) {
+        this.aiOrNot = aiOrNot;
     }
 
     public boolean isSaidMauMau() {

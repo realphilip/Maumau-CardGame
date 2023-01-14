@@ -33,6 +33,9 @@ public class GameServiceImpl implements GameService {
         game.setSpecialRules(specialRules);
         for (String playerValue : playerList){
             Player player = playerService.newPlayer(playerValue);
+            if (playerValue.contains("Computer")){
+                player.setAiOrNot(true);
+            }
             actualPlayers.add(player);
             logger.debug("Added player.");
         }
