@@ -39,6 +39,7 @@ public class AIServiceImpl implements AIService {
     @Override
     public Color whatColorToWish() {
         logger.debug("The AI is choosing what color to wish!");
+        // inspired by : https://stackoverflow.com/questions/1972392/pick-a-random-value-from-an-enum
         final int VALUESLENGTH = Color.values().length;
         int colorIndex = randomizer.nextInt(VALUESLENGTH);
         Color wishedColor = null;
