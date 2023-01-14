@@ -28,22 +28,23 @@ public class GameServiceImpl implements GameService {
     public Game createGame(String uniqueGameName, List<String> playerList, boolean specialRules) {
         Game game = new Game();
         logger.debug("creating a new game");
-        game.setSpecialRules(specialRules);
-        List<Player> actualPlayers = new ArrayList<>();
         Stack playStack = new Stack();
+        List<Player> actualPlayers = new ArrayList<>();
+        game.setSpecialRules(specialRules);
         for (String playerValue : playerList){
             Player player = playerService.newPlayer(playerValue);
             actualPlayers.add(player);
+            logger.debug("Added player.");
         }
         game.setPlayerList(actualPlayers);
         game.setActivePlayer(game.getPlayerList().get(0));
         game.setDrawStack(cardService.shuffleStack(cardService.createStack(), false));
-        game.setDrawStack(playStack);
-        //DONE TILL HERE
-        //g1.setUniqueGameName(uniqueGameName);
-        game.setSpecialRules(specialRules);
+        game.setDrawStack(giveAroundCards(game.getDrawStack(), game.getPlayerList(), cardsPerPlayer(game.getDrawStack(), game.getPlayerList())));
+        //taking the last card of the draw stack and using it to start the playstack and be the first card of the game.
+        playStack.cardList.add(game.getDrawStack().cardList.get(game.getDrawStack().cardList.size() - 1));
+        game.setPlayStack(playStack);
+        game.setDrawStack(removeCardFromAStack(game.getDrawStack(), game.getDrawStack().cardList.get(game.getDrawStack().cardList.size() -1)));
         return game;
-        //System.out.println(" hello");
     }
 
     @Override
