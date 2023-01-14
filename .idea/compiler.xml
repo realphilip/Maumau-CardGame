@@ -9,6 +9,7 @@
         <module name="gamemanagement" />
         <module name="cardmanagement" />
         <module name="rulesmanagement" />
+        <module name="aimanagement" />
         <module name="playermanagement" />
         <module name="springconfig" />
         <module name="kbe-maumau" />
