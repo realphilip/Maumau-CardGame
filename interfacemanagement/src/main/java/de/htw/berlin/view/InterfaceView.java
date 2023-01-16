@@ -12,8 +12,8 @@ public class InterfaceView {
     }
 
     //upon invalid inputs, prompts user to put in either yes or no.
-    public void invalidInputYesNo() {
-        System.out.println("Youve inputted an invalid answer. Choose either yes or no.");
+    public void badYNInputMessage() {
+        System.out.println("Youve inputted an invalid yes or no answer. Choose either Y for yes or N for no.");
     }
 
     //shows the rules of the game to new players.
@@ -31,6 +31,11 @@ public class InterfaceView {
                 "A seven means the next player has to draw two cards\n" +
                 "and an Eight skips the next person.\n"
         );
+    }
+
+    //
+    public void badNumberInputMessage() {
+        System.out.println("Sorry! Your input was incorrect or erroneous. Please, put in a number within the above-specified range. ");
     }
 }
 
