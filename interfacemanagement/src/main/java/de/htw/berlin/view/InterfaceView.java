@@ -18,7 +18,8 @@ public class InterfaceView {
 
     //shows the rules of the game to new players.
     public void listRules() {
-        System.out.println("Choose from either normal or special rules:" +
+        System.out.println("Thank you for choosing to play this game.\n" +
+                "Choose from either normal or special rules:" +
                 "NORMAL RULES\n" +
                 "Cards can only be played if either the color or the value matches the deck\n" +
                 "if its a players turn but that player doesnt have a card, he draws, and the direction is always clockwise\n" +

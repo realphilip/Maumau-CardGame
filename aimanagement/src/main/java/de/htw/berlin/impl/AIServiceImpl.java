@@ -61,7 +61,7 @@ public class AIServiceImpl implements AIService {
     @Override
     public boolean saysMauMauOrForgetsTo(Player player) {
         logger.debug("Checking the AI's mau status.");
-        if (player.getHand().size() == 1) {
+        if (player.getHand().cardList.size() == 1) {
             int probability = randomizer.nextInt(100);
             if (probability <= 80){
                 return true;

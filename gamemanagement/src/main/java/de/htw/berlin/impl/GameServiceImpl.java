@@ -105,7 +105,7 @@ public class GameServiceImpl implements GameService {
     public boolean checkWinner(Player player) {
         //FALSE IF PLAYER WINS!
         logger.debug("Checking if a player has won the game yet.");
-        if (player.getHand().isEmpty()) {
+        if (player.getHand().cardList.isEmpty()) {
             return false;
         } else {
             return true;
@@ -172,7 +172,7 @@ public class GameServiceImpl implements GameService {
     @Override
     public boolean isSayMauMauNecessary(Player player) {
         logger.debug("checking if saying Mau is necessary for a player");
-        if (player.getHand().size() == 1) return true;
+        if (player.getHand().cardList. size() == 1) return true;
         else return false;
     }
 

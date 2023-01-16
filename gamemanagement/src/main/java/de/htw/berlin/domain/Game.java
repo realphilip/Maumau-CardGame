@@ -2,12 +2,16 @@ package de.htw.berlin.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
 
+@Entity
 public class Game {
 
     //go through playerList, index 0 is player's turn
     private Player activePlayer;
+    @ElementCollection
     private List<Player> playerList = new ArrayList<>();
+    
     private Stack drawStack;
     private Stack playStack;
 
@@ -122,6 +126,8 @@ public class Game {
         this.activePlayer = activePlayer;
     }
 
+    @GeneratedValue
+    @Id
     public Long getId() {
         return id;
     }

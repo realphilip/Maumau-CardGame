@@ -13,6 +13,7 @@
         <module name="playermanagement" />
         <module name="springconfig" />
         <module name="kbe-maumau" />
+        <module name="exceptions" />
         <module name="interfacemanagement" />
       </profile>
     </annotationProcessing>
