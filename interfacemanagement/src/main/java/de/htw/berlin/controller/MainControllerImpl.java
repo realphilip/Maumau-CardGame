@@ -19,7 +19,9 @@ public class MainControllerImpl implements Main{
      * The method to run the game.
      */
     @Override
-    public void run() {
+    public void run(
+            EntityManagerFactory entityManagerFactory = Persistence
+    ) {
         //incomplete
     }
 
