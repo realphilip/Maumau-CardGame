@@ -1,11 +1,13 @@
 package de.htw.berlin.domain;
 
+import javax.persistence.Embeddable;
 import java.util.List;
-import java.util.Stack;
-
+@Embeddable
 public class Player {
     private String name;
-    private Stack<Card> hand;
+    private Stack hand;
+
+    private boolean aiOrNot = false;
     private boolean saidMauMau = false;
 
     //add boolean for real player/computer player
@@ -18,12 +20,20 @@ public class Player {
         this.name = name;
     }
 
-    public Stack<Card> getHand() {
+    public Stack getHand() {
         return hand;
     }
 
-    public void setHand(Stack<Card> hand) {
+    public void setHand(Stack hand) {
         this.hand = hand;
+    }
+
+    public boolean isAiOrNot() {
+        return aiOrNot;
+    }
+
+    public void setAiOrNot(boolean aiOrNot) {
+        this.aiOrNot = aiOrNot;
     }
 
     public boolean isSaidMauMau() {

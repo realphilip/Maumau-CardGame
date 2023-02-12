@@ -1,55 +1,69 @@
 package de.htw.berlin.domain;import de.htw.berlin.domain.Card;
-import de.htw.berlin.domain.Player;
 import de.htw.berlin.impl.PlayerServiceImpl;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import de.htw.berlin.domain.Card;
+import de.htw.berlin.domain.Player;
+import de.htw.berlin.domain.Stack;
+import de.htw.berlin.export.PlayerService;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerServiceImplTest {
+    @Mock
+    private Stack hand;
 
-    private PlayerServiceImpl playerService;
-    private Card mockCard;
-    private Player mockPlayer;
+    @Mock
+    private Card card;
 
-    @Before
-    public void setUp() {
-        playerService = new PlayerServiceImpl();
-        mockCard = Mockito.mock(Card.class);
-        mockPlayer = Mockito.mock(Player.class);
-    }
+    @InjectMocks
+    private PlayerServiceImpl playerServiceImpl;
 
     @Test
     public void testNewPlayer() {
-        String playerName = "John Doe";
-        Player player = playerService.newPlayer(playerName);
-        assertEquals(playerName, player.getName());
+        String name = "player1";
+        Player expectedPlayer = new Player();
+        expectedPlayer.setName(name);
+
+        Player actualPlayer = playerServiceImpl.newPlayer(name);
+
+        assertEquals(expectedPlayer, actualPlayer);
     }
 
     @Test
     public void testAddCardtoHand() {
-        Stack<Card> hand = new Stack<>();
-        when(mockPlayer.getHand()).thenReturn(hand);
+        Player player = new Player();
+        player.setHand(hand);
 
-        Player player = playerService.addCardtoHand(mockCard, mockPlayer);
-        assertEquals(1, player.getHand().size());
-        assertEquals(mockCard, player.getHand().peek());
+        List<Card> cardList = new ArrayList<>();
+        when(hand.getCardList()).thenReturn(cardList);
+
+        Player expectedPlayer = playerServiceImpl.addCardtoHand(card, player);
+
+        assertEquals(expectedPlayer.getHand().getCardList().size(), 1);
     }
 
     @Test
     public void testRemoveCardfromHand() {
-        Stack<Card> hand = new Stack<>();
-        hand.push(mockCard);
-        when(mockPlayer.getHand()).thenReturn(hand);
+        Player player = new Player();
+        player.setHand(hand);
 
-        Player player = playerService.removeCardfromHand(mockCard, mockPlayer);
-        assertEquals(0, player.getHand().size());
+        List<Card> cardList = new ArrayList<>();
+        cardList.add(card);
+        when(hand.getCardList()).thenReturn(cardList);
+
+        Player expectedPlayer = playerServiceImpl.removeCardfromHand(card, player);
+
+        assertEquals(expectedPlayer.getHand().getCardList().size(), 0);
     }
 }

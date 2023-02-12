@@ -36,13 +36,12 @@ public interface GameService {
 
     /**
      *
-     * Shuffel a Stack
+     *Shuffle a stack or dont
      *
-     * @param stack of cards
-     *
-     * @return shuffled Stack
+     * @param game game before
+     *@return the game with the shuffled stack or not
      */
-    Stack shuffleStack(Stack stack);
+    Game shuffleStack(Game game);
 
     /**
      *
@@ -83,5 +82,73 @@ public interface GameService {
      * @return the modified game object, in case player forgot to say Mau and has to keep playing
      */
     Game sayMauMau(Game game);
+<<<<<<< HEAD
     //TODO: find out how to deal with Ablagestapel
+=======
+
+    /**
+     * check if saying maumau is at all necessary.
+     * @param player the player thats being checked
+     * @return true if it is necessary
+     */
+    boolean isSayMauMauNecessary(Player player);
+
+    /**
+     * choose the rules for the game. true are the special rules. false are the normal (simple) rules.
+     * @param specialRules
+     * @return the implementation of the selected rules.
+     */
+    RulesService chooseRules(boolean specialRules);
+
+    /**
+     * Gives around Cards to all the players, generally at the start of the game.
+     *
+     * @param drawStack - the stack to draw from
+     * @param playerList - all the players at the start of the game
+     * @param amountOfCardsToGiveAround  - this is the number of iterations the for loop goes through
+     * @return - the modified drawStack
+     */
+    Stack giveAroundCards(Stack drawStack, List<Player> playerList, int amountOfCardsToGiveAround);
+
+    /**
+     * This is a special method that giveAroundCards to one player, instead of a whole game.
+     *
+     * @param drawStack - the stack to draw from
+     * @param player - the single player to give to
+     * @param amountOfCardsToGiveAround  - this is the number of iterations the for loop goes through
+     * @return - the modified drawStack
+     */
+    Stack giveCardsToOne(Stack drawStack, Player player, int amountOfCardsToGiveAround);
+
+    /**
+     * an assisting method to remove a card from a stack
+     *
+     * @param stack - the stack from which to remove
+     * @param card - the card to remove
+     * @return - the modified stack
+     */
+    Stack removeCardFromAStack(Stack stack, Card card);
+
+    /**
+     * This method is necessary in case a player chooses to play with a high amount of players.
+     * This determines a fun configuration of the game so that there are enough cards in the drawStack and enough cards for the players.
+     *
+     * @param completeStack   - the initial complete card stack
+     * @param players - A list of players
+     * @return - the ideal, calculated number of cards a game should start with.
+     */
+    int cardsPerPlayer(Stack completeStack, List<Player> players);
+
+    /**
+     * This is the method that takes a card from a player and inserts it to the top of the playstack.
+     *
+     * @param playStack the playstack
+     * @param player the player
+     * @param card the card thats being played.
+     * @return - the playstack again but modified, as with all the other methods.
+     */
+    Stack putDownCard(Stack playStack, Player player, Card card);
+
+
+>>>>>>> 13cb96ad3582c6858f5bdbbf97507c24a6b64ff0
 }
