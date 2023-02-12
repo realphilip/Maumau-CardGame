@@ -84,6 +84,4 @@ public interface GameService {
      */
     Game sayMauMau(Game game);
     //TODO: find out how to deal with Ablagestapel
-
-    RulesService
 }

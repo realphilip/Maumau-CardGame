@@ -40,12 +40,11 @@ public class GameServiceImpl implements GameService {
         //g1.setUniqueGameName(uniqueGameName);
         game.setSpecialRules(specialRules);
         return game;
-        System.out.println(" ");
     }
 
     @Override
     public Game drawCard(Game game) {
-        Card c1 = new Card();
+        Card c1 = new Card(Value.ACE, Color.HEART);
         game.getDrawStack().cardList.remove(c1);
         game.getActivePlayer().getHand().add(c1);
         return game;
@@ -69,14 +68,14 @@ public class GameServiceImpl implements GameService {
         }
 
         player.getHand().remove(card);
-        game.getPlayStack().putCardOnStack(card);
+        //game.getPlayStack().putCardOnStack(card);
 
         return game;
     }
 
     @Override
     public Stack shuffleStack(Stack stack) {
-        stack.shuffleStack();
+        //stack.shuffleStack();
         return stack;
     }
 
