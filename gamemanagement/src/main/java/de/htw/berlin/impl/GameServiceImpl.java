@@ -24,6 +24,19 @@ public class GameServiceImpl implements GameService {
     private NormalRulesServiceImpl normalRulesService;
     private SpecialRulesServiceImpl specialRulesService;
     Logger logger;
+
+    @Autowired
+    public GameServiceImpl(PlayerService playerService, CardService cardService, RulesService rulesService, NormalRulesServiceImpl normalRulesService, SpecialRulesServiceImpl specialRulesService) {
+        this.playerService = playerService;
+        this.cardService = cardService;
+        this.rulesService = rulesService;//
+        this.normalRulesService = normalRulesService;
+        this.specialRulesService = specialRulesService;
+    }
+
+    public GameServiceImpl() {
+    }
+
     @Override
     public Game createGame(String uniqueGameName, List<String> playerList, boolean specialRules) {
         Game game = new Game();
@@ -52,16 +65,10 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game drawCard(Game game) {
-<<<<<<< HEAD
-        Card c1 = new Card(Value.ACE, Color.HEART);
-        game.getDrawStack().cardList.remove(c1);
-        game.getActivePlayer().getHand().add(c1);
-=======
         logger.debug("Simply drawing a single card from the Draw Stack.");
         Card card = game.getDrawStack().cardList.get(game.getDrawStack().cardList.size() - 1); //the last card fo the drawStack
         playerService.addCardtoHand(card, game.getActivePlayer());
         game.setDrawStack(removeCardFromAStack(game.getDrawStack(), card));
->>>>>>> 13cb96ad3582c6858f5bdbbf97507c24a6b64ff0
         return game;
     }
 
@@ -85,33 +92,10 @@ public class GameServiceImpl implements GameService {
             game.setCurrentPlayerSkipped(rulesService.isTurnSkipped(card));
             return game;
         }
-<<<<<<< HEAD
-
-        Card lastCard = game.getPlayStack().cardList.get(game.getPlayStack().cardList.size() - 1);
-
-        if(card.getValue() == Value.JACK && lastCard.getValue() == Value.JACK){
-            throw new IllegalArgumentException("You can not put Jack on a Jack");
-        }
-
-        if(card.getValue() != lastCard.getValue() || card.getColor() != lastCard.getColor()){
-            throw new IllegalArgumentException("The color/value of your card does not " +
-                    "match with the last card on the Play-Stack");
-        }
-
-        player.getHand().remove(card);
-        //game.getPlayStack().putCardOnStack(card);
-
-=======
->>>>>>> 13cb96ad3582c6858f5bdbbf97507c24a6b64ff0
         return game;
     }
 
     @Override
-<<<<<<< HEAD
-    public Stack shuffleStack(Stack stack) {
-        //stack.shuffleStack();
-        return stack;
-=======
     public Game shuffleStack(Game game) {
         logger.debug("Checking if the drawStack is nearly empty.");
         Stack drawStack = game.getDrawStack();
@@ -128,7 +112,6 @@ public class GameServiceImpl implements GameService {
             game.setPlayStack(newPlayStack);
         }
         return game;
->>>>>>> 13cb96ad3582c6858f5bdbbf97507c24a6b64ff0
     }
 
     @Override

@@ -1,7 +1,5 @@
 package de.htw.berlin.view;
 
-import java.sql.SQLOutput;
-
 public class InterfaceView {
 
     //prints a placeholder for definition purposes.

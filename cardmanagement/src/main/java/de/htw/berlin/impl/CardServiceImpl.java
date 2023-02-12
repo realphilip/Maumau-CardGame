@@ -11,6 +11,8 @@ import java.util.Collections;
 
 @Component
 public class CardServiceImpl implements CardService {
+    public CardServiceImpl() {
+    }
 
     @Override
     public Card createCard(Value value, Color color) {

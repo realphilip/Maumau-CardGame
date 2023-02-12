@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class MainControllerImpl implements Main{
     private Scanner scanner = new Scanner(System.in);
-    private InterfaceView viewer = new InterfaceView();
+    InterfaceView viewer = new InterfaceView();
     Logger logger;
 
     /**
@@ -20,9 +20,10 @@ public class MainControllerImpl implements Main{
      */
     @Override
     public void run(
-            EntityManagerFactory entityManagerFactory = Persistence
+            //EntityManagerFactory entityManagerFactory = Persistence.createEntity
+
     ) {
-        //incomplete
+        //incomplete - how to implement run class?
     }
 
     /**

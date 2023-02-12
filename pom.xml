@@ -15,6 +15,8 @@
         <module>rulesmanagement</module>
         <module>interfacemanagement</module>
         <module>aimanagement</module>
+        <module>springconfig</module>
+        <module>datamanagement</module>
         <module>exceptions</module>
     </modules>
     <properties>

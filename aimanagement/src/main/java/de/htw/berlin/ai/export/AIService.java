@@ -1,4 +1,4 @@
-package de.htw.berlin.export;
+package de.htw.berlin.ai.export;
 
 import de.htw.berlin.domain.Color;
 import de.htw.berlin.domain.Player;

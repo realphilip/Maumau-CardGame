@@ -2,8 +2,6 @@ package de.htw.berlin.export;
 
 import de.htw.berlin.domain.*;
 import de.htw.berlin.domain.Color;
-
-import java.awt.*;
 import java.util.List;
 
 public interface GameService {
@@ -82,9 +80,6 @@ public interface GameService {
      * @return the modified game object, in case player forgot to say Mau and has to keep playing
      */
     Game sayMauMau(Game game);
-<<<<<<< HEAD
-    //TODO: find out how to deal with Ablagestapel
-=======
 
     /**
      * check if saying maumau is at all necessary.
@@ -148,7 +143,4 @@ public interface GameService {
      * @return - the playstack again but modified, as with all the other methods.
      */
     Stack putDownCard(Stack playStack, Player player, Card card);
-
-
->>>>>>> 13cb96ad3582c6858f5bdbbf97507c24a6b64ff0
 }

@@ -10,6 +10,7 @@
         <module name="cardmanagement" />
         <module name="rulesmanagement" />
         <module name="aimanagement" />
+        <module name="datamanagement" />
         <module name="playermanagement" />
         <module name="springconfig" />
         <module name="kbe-maumau" />
@@ -17,6 +18,9 @@
         <module name="interfacemanagement" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="testModule" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

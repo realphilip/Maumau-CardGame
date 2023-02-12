@@ -1,8 +1,8 @@
-package de.htw.berlin.impl;
+package de.htw.berlin.ai.impl;
 
 import de.htw.berlin.domain.Color;
 import de.htw.berlin.domain.Player;
-import de.htw.berlin.export.AIService;
+import de.htw.berlin.ai.export.AIService;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
